@@ -1,0 +1,4 @@
+# Optional local-browser validation. Uses an existing Chrome installation.
+playwright==1.56.0
+greenlet==3.5.6
+pyee==13.0.1

@@ -1,0 +1,18 @@
+# Credentials and local environments
+.env
+.env.*
+!.env.example
+**/.venv/
+**/venv/
+
+# Python/test caches and local tooling
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+.playwright-mcp/
+.DS_Store
+
+# Keep video and generated evidence local
+topics/jev-image-input/poc/runs/
+topics/jev-image-input/poc/assets/*
+!topics/jev-image-input/poc/assets/.gitkeep

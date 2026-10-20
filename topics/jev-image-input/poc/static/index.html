@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Jev Frame Lab · Where to look</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233457db'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="header">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">⌖</span><div><h1>Can Jev tell you where to look?</h1><span class="subtitle">Supplied context: a man holding a gun. Jev locates the visible person.</span></div></div>
+      <div class="header-actions"><span id="connection" class="badge" hidden></span><button id="startButton" aria-label="Start video analysis" disabled>Start</button></div>
+    </header>
+
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+    <main class="workspace">
+      <section class="video-panel panel" aria-label="Fixed CCTV video with response-gated person overlay">
+        <div class="panel-heading"><h2>CCTV footage</h2><span id="frameDecision" class="badge">Awaiting analysis</span></div>
+        <div class="media-stage">
+          <video id="video" playsinline muted preload="auto" disablepictureinpicture disableremoteplayback aria-label="Fixed CCTV video, advanced through sampled frames by Start"></video>
+          <canvas id="boxOverlay" width="960" height="540" aria-label="Person border drawn only after Jev responds"></canvas>
+          <div id="videoEmpty" class="empty-state"><span class="empty-icon" aria-hidden="true">▷</span><strong id="emptyTitle">Loading footage</strong><p id="emptyDetail">Your video will appear here shortly.</p></div>
+        </div>
+        <div class="frame-caption"><strong id="frameTitle">Frame analysis</strong><span id="frameDetail">Each frame is analyzed before a location is highlighted.</span></div>
+      </section>
+
+      <aside class="json-panels" aria-label="Current frame input and output">
+        <section class="json-panel panel"><div class="panel-heading"><h2>Input <span>JSON</span></h2><span class="panel-hint">jev-1.14.0</span></div><pre id="requestJSON" tabindex="0" aria-label="Jev input JSON">{}</pre><p class="json-caption">Frame reference and typed questions · image data omitted</p></section>
+        <section class="json-panel panel"><div class="panel-heading"><h2>Output <span>JSON</span></h2><span id="outputState" class="panel-hint">Awaiting analysis</span></div><pre id="responseJSON" tabindex="0" aria-label="Jev output JSON">{}</pre><p id="responseLabel" class="json-caption">Person location, confidence, and usage returned by Jev.</p></section>
+      </aside>
+    </main>
+
+    <section class="metrics" aria-label="Run token usage and timing">
+      <div class="metric"><span>Analyzed / highlighted</span><strong id="metricFrames">0 / 0</strong><small id="metricErrors">Waiting to begin</small></div>
+      <div class="metric"><span>Input tokens</span><strong id="metricInput">—</strong><small id="metricUsage">Reported usage</small></div>
+      <div class="metric"><span>Output tokens</span><strong id="metricOutput">—</strong><small id="metricCost">Estimated cost: —</small></div>
+      <div class="metric"><span>API time · p50 / p95</span><strong id="metricSDK">—</strong><small id="metricSamples">Request through response</small></div>
+      <div class="metric"><span>End-to-end · p50</span><strong id="metricClient">—</strong><small id="metricClientSamples">Frame capture + analysis</small></div>
+    </section>
+  </div>
+</body>
+</html>
